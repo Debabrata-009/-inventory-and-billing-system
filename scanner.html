@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Happy Mart | Scanner</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Manrope:wght@400;500;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <a class="brand" href="index.html">
+        <span class="brand-mark">
+          <img src="happy-mart-logo.jpg" alt="Happy Mart logo">
+        </span>
+        <span>
+          <strong>Happy Mart</strong>
+          <small>Inventory & Billing System</small>
+        </span>
+      </a>
+      <nav class="site-nav">
+        <a href="index.html">Home</a>
+        <a href="dashboard.html">Dashboard</a>
+        <a href="inventory.html">Inventory</a>
+        <a href="billing.html">Billing</a>
+        <a class="active" href="scanner.html">Scanner</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="page-shell">
+    <section class="page-hero container compact-hero">
+      <div>
+        <p class="eyebrow">Scanner support</p>
+        <h1>Barcode lookup that helps the billing man work faster.</h1>
+        <p>Type or scan a product barcode to find item details, stock status, and a billing shortcut.</p>
+      </div>
+      <a class="btn btn-primary" href="billing.html">Move to Billing</a>
+    </section>
+
+    <section class="container scanner-layout">
+      <article class="panel scanner-panel">
+        <div class="panel-head">
+          <h2>Scan Product</h2>
+          <p>Use a barcode scanner or enter the item code manually.</p>
+        </div>
+        <form id="scannerForm" class="scanner-form">
+          <input id="scannerInput" type="text" placeholder="Enter barcode number">
+          <button class="btn btn-primary" type="submit">Find Product</button>
+        </form>
+        <div class="scanner-demo-buttons">
+          <button class="chip-button" data-scan-code="8901234567001">8901234567001</button>
+          <button class="chip-button" data-scan-code="8901234567003">8901234567003</button>
+          <button class="chip-button" data-scan-code="8901234567005">8901234567005</button>
+        </div>
+      </article>
+
+      <article class="panel result-panel">
+        <div class="panel-head">
+          <h2>Scan Result</h2>
+          <p>Matched product details will appear here.</p>
+        </div>
+        <div id="scannerResult" class="scanner-result empty-state">
+          Scan a barcode to view product details.
+        </div>
+      </article>
+    </section>
+
+    <section class="container panel">
+      <div class="panel-head">
+        <h2>Recent Scans</h2>
+        <p>Latest item lookups for the billing counter.</p>
+      </div>
+      <div id="scanHistory" class="scan-history"></div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-wrap">
+      <p>Developer info for the Happy Mart scanner and counter system.</p>
+      <div>
+        <a href="https://www.instagram.com/sahu_sanu_/?hl=en" target="_blank" rel="noreferrer">Instagram</a>
+        <a href="mailto:debabratasahu282@gmail.com">debabratasahu282@gmail.com</a>
+        <a href="tel:6372657592">6372657592</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

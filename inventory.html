@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Happy Mart | Inventory</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Manrope:wght@400;500;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <a class="brand" href="index.html">
+        <span class="brand-mark">
+          <img src="happy-mart-logo.jpg" alt="Happy Mart logo">
+        </span>
+        <span>
+          <strong>Happy Mart</strong>
+          <small>Inventory & Billing System</small>
+        </span>
+      </a>
+      <nav class="site-nav">
+        <a href="index.html">Home</a>
+        <a href="dashboard.html">Dashboard</a>
+        <a class="active" href="inventory.html">Inventory</a>
+        <a href="billing.html">Billing</a>
+        <a href="scanner.html">Scanner</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="page-shell">
+    <section class="page-hero container compact-hero">
+      <div>
+        <p class="eyebrow">Inventory management</p>
+        <h1>Control shop stock with clarity.</h1>
+        <p>Monitor item quantity, price, reorder level, and category distribution from one page.</p>
+      </div>
+      <a class="btn btn-primary" href="billing.html">Go to Billing</a>
+    </section>
+
+    <section class="container dashboard-grid">
+      <article class="panel metric-panel">
+        <span>Total Products</span>
+        <strong id="totalProducts">0</strong>
+      </article>
+      <article class="panel metric-panel">
+        <span>Low Stock Items</span>
+        <strong id="lowStockCount">0</strong>
+      </article>
+      <article class="panel metric-panel">
+        <span>Total Stock Units</span>
+        <strong id="totalUnits">0</strong>
+      </article>
+      <article class="panel metric-panel">
+        <span>Inventory Value</span>
+        <strong id="inventoryValue">Rs 0</strong>
+      </article>
+    </section>
+
+    <section class="container two-column">
+      <article class="panel">
+        <div class="panel-head">
+          <h2>Supplier Bill Import</h2>
+          <p>Add products from a company purchase bill directly into inventory.</p>
+        </div>
+        <form id="purchaseBillForm" class="form-grid">
+          <label>
+            Supplier Name
+            <input type="text" id="supplierName" placeholder="Example: ABC Foods Pvt Ltd" required>
+          </label>
+          <label>
+            Invoice Number
+            <input type="text" id="invoiceNumber" placeholder="INV-2026-101" required>
+          </label>
+          <label>
+            Bill Date
+            <input type="date" id="billDate" required>
+          </label>
+          <label class="full-width">
+            Bill Image
+            <input type="file" id="billImage" accept="image/*">
+          </label>
+          <label class="full-width">
+            Bill Items
+            <textarea id="billItems" rows="8" placeholder="One item per line: Product Name, Category, Price, Quantity" required></textarea>
+          </label>
+          <p class="chart-note full-width">Example: Fresh Milk 1L, Dairy, 56, 24</p>
+          <button class="btn btn-primary" type="submit">Import Bill to Inventory</button>
+        </form>
+        <p id="purchaseBillStatus" class="chart-note">Import one supplier bill to add many products together.</p>
+      </article>
+
+      <article class="panel">
+        <div class="panel-head">
+          <h2>Recent Purchase Bills</h2>
+          <p>Latest supplier bills added to inventory.</p>
+        </div>
+        <div id="purchaseBillList" class="scan-history"></div>
+      </article>
+    </section>
+
+    <section class="container two-column">
+      <article class="panel">
+        <div class="panel-head">
+          <h2>Add Product</h2>
+          <p>Enter a new item for store inventory.</p>
+        </div>
+        <form id="inventoryForm" class="form-grid">
+          <label>
+            Product Name
+            <input type="text" id="productName" placeholder="Example: Basmati Rice 5kg" required>
+          </label>
+          <label>
+            Category
+            <input type="text" id="productCategory" placeholder="Grocery" required>
+          </label>
+          <label>
+            Barcode
+            <input type="text" id="productBarcode" placeholder="8901234567890" required>
+          </label>
+          <label>
+            Price
+            <input type="number" id="productPrice" min="1" placeholder="450" required>
+          </label>
+          <label>
+            Quantity
+            <input type="number" id="productQuantity" min="1" placeholder="40" required>
+          </label>
+          <label>
+            Reorder Level
+            <input type="number" id="productReorder" min="1" placeholder="10" required>
+          </label>
+          <button class="btn btn-primary" type="submit">Add to Inventory</button>
+        </form>
+      </article>
+
+      <article class="panel">
+        <div class="panel-head">
+          <h2>Low Stock Alerts</h2>
+          <p>These items need attention soon.</p>
+        </div>
+        <div id="lowStockList" class="alert-list"></div>
+      </article>
+    </section>
+
+    <section class="container panel">
+      <div class="panel-head row-head">
+        <div>
+          <h2>Product Table</h2>
+          <p>All current items in the Happy Mart inventory.</p>
+        </div>
+        <input id="inventorySearch" class="search-input" type="search" placeholder="Search products or barcode">
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Product</th>
+              <th>Image</th>
+              <th>Category</th>
+              <th>Barcode</th>
+              <th>Price</th>
+              <th>Stock</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody id="inventoryTableBody"></tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-wrap">
+      <p>Developer info for the Happy Mart website and inventory system.</p>
+      <div>
+        <a href="https://www.instagram.com/sahu_sanu_/?hl=en" target="_blank" rel="noreferrer">Instagram</a>
+        <a href="mailto:debabratasahu282@gmail.com">debabratasahu282@gmail.com</a>
+        <a href="tel:6372657592">6372657592</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

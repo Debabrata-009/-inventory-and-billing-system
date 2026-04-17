@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Happy Mart | Billing</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Manrope:wght@400;500;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <a class="brand" href="index.html">
+        <span class="brand-mark">
+          <img src="happy-mart-logo.jpg" alt="Happy Mart logo">
+        </span>
+        <span>
+          <strong>Happy Mart</strong>
+          <small>Inventory & Billing System</small>
+        </span>
+      </a>
+      <nav class="site-nav">
+        <a href="index.html">Home</a>
+        <a href="dashboard.html">Dashboard</a>
+        <a href="inventory.html">Inventory</a>
+        <a class="active" href="billing.html">Billing</a>
+        <a href="scanner.html">Scanner</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="page-shell">
+    <section class="page-hero container compact-hero">
+      <div>
+        <p class="eyebrow">Billing counter</p>
+        <h1>Fast billing for the cashier desk.</h1>
+        <p>Add products to the cart, adjust quantity, and generate a ready-to-print invoice summary.</p>
+      </div>
+      <a class="btn btn-secondary" href="scanner.html">Open Scanner</a>
+    </section>
+
+    <section class="container billing-layout">
+      <article class="panel">
+        <div class="panel-head">
+          <h2>Add Item to Bill</h2>
+          <p>Select a product and quantity for the current customer.</p>
+        </div>
+        <form id="billingForm" class="form-grid billing-form">
+          <label>
+            Product
+            <select id="billingProduct"></select>
+          </label>
+          <label>
+            Quantity
+            <input id="billingQuantity" type="number" min="1" value="1" required>
+          </label>
+          <button class="btn btn-primary" type="submit">Add Item</button>
+        </form>
+
+        <div class="billing-shortcuts">
+          <button class="chip-button" data-bill-barcode="8901234567001">Scan Fresh Milk</button>
+          <button class="chip-button" data-bill-barcode="8901234567004">Scan Bread</button>
+          <button class="chip-button" data-bill-barcode="8901234567006">Scan Soap</button>
+        </div>
+
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Item</th>
+                <th>Qty</th>
+                <th>Price</th>
+                <th>Total</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody id="billingTableBody"></tbody>
+          </table>
+        </div>
+      </article>
+
+      <aside class="panel bill-summary">
+        <div class="panel-head">
+          <h2>Invoice Summary</h2>
+          <p>Quick view for customer billing.</p>
+        </div>
+        <div class="summary-line"><span>Subtotal</span><strong id="subtotalAmount">Rs 0.00</strong></div>
+        <div class="summary-line"><span>Tax (5%)</span><strong id="taxAmount">Rs 0.00</strong></div>
+        <div class="summary-line">
+          <span>Discount</span>
+          <strong id="discountAmount">Rs 0.00</strong>
+        </div>
+        <label>
+          Apply Discount
+          <input id="discountInput" type="number" min="0" value="0">
+        </label>
+        <div class="summary-total"><span>Grand Total</span><strong id="grandTotalAmount">Rs 0.00</strong></div>
+        <button id="printBillButton" class="btn btn-primary btn-block" type="button">Generate Bill</button>
+        <div id="invoicePreview" class="invoice-preview">
+          No items added yet.
+        </div>
+      </aside>
+    </section>
+
+    <section class="container">
+      <article id="printInvoice" class="print-invoice">
+        <div class="print-header">
+          <div class="print-brand">
+            <img src="happy-mart-logo.jpg" alt="Happy Mart logo">
+            <div>
+              <h2>Happy Mart</h2>
+              <p>Inventory & Billing System</p>
+            </div>
+          </div>
+          <div class="print-meta">
+            <p id="printInvoiceNumber">Invoice: HM-0001</p>
+            <p id="printInvoiceDate">Date:</p>
+          </div>
+        </div>
+        <div class="print-customer">
+          <p>Customer Bill</p>
+          <p>Thank you for shopping with Happy Mart.</p>
+        </div>
+        <table class="print-table">
+          <thead>
+            <tr>
+              <th>Item</th>
+              <th>Qty</th>
+              <th>Price</th>
+              <th>Total</th>
+            </tr>
+          </thead>
+          <tbody id="printInvoiceBody"></tbody>
+        </table>
+        <div class="print-totals">
+          <p><span>Subtotal</span><strong id="printSubtotal">Rs 0.00</strong></p>
+          <p><span>Tax</span><strong id="printTax">Rs 0.00</strong></p>
+          <p><span>Discount</span><strong id="printDiscount">Rs 0.00</strong></p>
+          <p class="print-grand-total"><span>Grand Total</span><strong id="printGrandTotal">Rs 0.00</strong></p>
+        </div>
+      </article>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-wrap">
+      <p>Developer info for the Happy Mart billing and website system.</p>
+      <div>
+        <a href="https://www.instagram.com/sahu_sanu_/?hl=en" target="_blank" rel="noreferrer">Instagram</a>
+        <a href="mailto:debabratasahu282@gmail.com">debabratasahu282@gmail.com</a>
+        <a href="tel:6372657592">6372657592</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
